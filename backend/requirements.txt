@@ -1,0 +1,22 @@
+# ─── Framework ───────────────────────────────────────────────
+Django==5.1.4
+djangorestframework==3.15.2
+djangorestframework-simplejwt==5.3.1
+
+# ─── Base de datos ────────────────────────────────────────────
+psycopg2-binary==2.9.9
+
+# ─── CORS ─────────────────────────────────────────────────────
+django-cors-headers==4.4.0
+
+# ─── Filtrado y búsqueda ──────────────────────────────────────
+django-filter==24.3
+
+# ─── Variables de entorno ─────────────────────────────────────
+python-dotenv==1.0.1
+
+# ─── Imágenes (upload de fotos de cabañas) ────────────────────
+Pillow==10.4.0
+
+# ─── Servidor de producción ───────────────────────────────────
+gunicorn==23.0.0

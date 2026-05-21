@@ -1,0 +1,94 @@
+services:
+
+  # ─── Base de datos PostgreSQL ────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: entre_rocas_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Backend Django + DRF ────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: entre_rocas_backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DB_HOST: db
+    volumes:
+      - media_files:/app/media
+      - static_files:/app/staticfiles
+    networks:
+      - internal
+    depends_on:
+      db:
+        condition: service_healthy
+    command:
+      - sh
+      - -c
+      - |
+        python manage.py migrate --noinput &&
+        python manage.py collectstatic --noinput &&
+        exec gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 120 --access-logfile -
+
+  # ─── Frontend React + Vite ───────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+    container_name: entre_rocas_frontend
+    restart: unless-stopped
+    networks:
+      - internal
+    depends_on:
+      - backend
+
+  # ─── Nginx Reverse Proxy ─────────────────────────────────────
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: entre_rocas_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - media_files:/app/media:ro
+      - static_files:/app/staticfiles:ro
+      - certbot_conf:/etc/letsencrypt:ro
+      - certbot_www:/var/www/certbot:ro
+    networks:
+      - internal
+    depends_on:
+      - backend
+      - frontend
+
+# ─── Red interna privada ─────────────────────────────────────
+networks:
+  internal:
+    driver: bridge
+
+# ─── Volúmenes persistentes ───────────────────────────────────
+volumes:
+  postgres_data:
+  media_files:
+  static_files:
+  certbot_conf:
+  certbot_www:

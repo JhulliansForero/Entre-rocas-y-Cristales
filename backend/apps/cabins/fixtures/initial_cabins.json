@@ -1,0 +1,314 @@
+[
+  {
+    "model": "cabins.cabin",
+    "pk": "la-gruta",
+    "fields": {
+      "name": "La Gruta",
+      "short_name": "La Gruta",
+      "tagline": "Duerme dentro de la roca viva",
+      "description": "Una experiencia única en el mundo: dormir en el interior de una antigua mina excavada en la roca viva de la montaña boyacense. La Gruta mantiene una temperatura constante y fresca gracias a sus paredes de piedra natural. En su interior encontrarás 1 cama doble, baño privado y una imponente tina tallada en piedra. El desayuno americano llega cada mañana: huevos campesinos, frutas de temporada, pan artesanal y café de origen boyacense. Al despertar, la luz que entra por la puerta de la cueva convierte el amanecer en algo completamente mágico.",
+      "location": "Mina excavada · Ráquira · Boyacá",
+      "capacity": 2,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "size_sqm": 20,
+      "price_per_night": "390000.00",
+      "main_image": "cabins/main/346821823.jpg",
+      "photo_url": "",
+      "accent_color": "#4a6650",
+      "tint": "rgba(74,102,80,.08)",
+      "rating": "4.90",
+      "reviews_count": 87,
+      "amenities": [
+        "1 cama doble",
+        "Tina tallada en piedra",
+        "Baño privado",
+        "Agua caliente 24 h",
+        "Desayuno americano incluido",
+        "Ropa de cama y toallas",
+        "Vistas al amanecer desde la entrada",
+        "WiFi gratuito",
+        "Parking gratuito",
+        "Se admiten mascotas"
+      ],
+      "experiences": [
+        "Observación de estrellas nocturna",
+        "Caminata a la cascada",
+        "Tour de minerales y cristales",
+        "Meditación al amanecer en la cueva",
+        "Senderismo por la montaña"
+      ],
+      "is_available": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "cabins.cabin",
+    "pk": "casa-del-arbol",
+    "fields": {
+      "name": "Casa del Árbol",
+      "short_name": "Casa del Árbol",
+      "tagline": "Entre ramas y nubes, tu refugio en las alturas",
+      "description": "Construida entre los brazos de un pino centenario, la Casa del Árbol es el alojamiento más especial del hotel. Sube por la escalera rústica y entra a tu nido personal: 1 cama doble rodeada de ventanas con vista directa al bosque de pinos. Por la noche, el suave movimiento del árbol y el canto de los pájaros se convierten en tu arrullo. El balcón natural entre las ramas te conecta con el bosque como ningún otro lugar. Incluye desayuno americano y acceso a todos los senderos del hotel.",
+      "location": "Bosque de pinos · Ráquira · Boyacá",
+      "capacity": 2,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "size_sqm": 18,
+      "price_per_night": "340000.00",
+      "main_image": "cabins/main/424731102.jpg",
+      "photo_url": "",
+      "accent_color": "#7a6a55",
+      "tint": "rgba(122,106,85,.08)",
+      "rating": "4.95",
+      "reviews_count": 124,
+      "amenities": [
+        "1 cama doble",
+        "Baño privado",
+        "Agua caliente",
+        "Desayuno americano incluido",
+        "Balcón natural entre las ramas",
+        "Vista directa al bosque de pinos",
+        "Ropa de cama y toallas",
+        "WiFi gratuito",
+        "Parking gratuito",
+        "Se admiten mascotas"
+      ],
+      "experiences": [
+        "Avistamiento de aves al amanecer",
+        "Caminata por el bosque de pinos",
+        "Visita al Árbol de los Sueños",
+        "Observación de estrellas",
+        "Tours a pie guiados"
+      ],
+      "is_available": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "cabins.cabin",
+    "pk": "el-mirador",
+    "fields": {
+      "name": "El Mirador",
+      "short_name": "El Mirador",
+      "tagline": "360° de cielo, montañas y silencio",
+      "description": "El Mirador es la joya de Entre Rocas y Cristales: una cabaña de vidrio y madera ubicada en la cima de la montaña, a 2.800 m.s.n.m. Sus paredes son ventanas del suelo al techo — absolutamente nada interrumpe la vista panorámica del valle de Güicán, los cerros nevados y el cielo estrellado. Cuenta con 2 camas sencillas y un baño privado con ventanal al paisaje. De noche, las estrellas brillan tan cerca que sientes que puedes tocarlas. Incluye desayuno americano y acceso exclusivo a los senderos de alta montaña.",
+      "location": "Cima de la montaña · Ráquira · Boyacá",
+      "capacity": 3,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "size_sqm": 20,
+      "price_per_night": "420000.00",
+      "main_image": "cabins/main/562902104.jpg",
+      "photo_url": "",
+      "accent_color": "#5e7c34",
+      "tint": "rgba(94,124,52,.08)",
+      "rating": "4.98",
+      "reviews_count": 63,
+      "amenities": [
+        "2 camas sencillas",
+        "Baño privado con ventanal panorámico",
+        "Paredes de vidrio 360°",
+        "Agua caliente",
+        "Desayuno americano incluido",
+        "Vistas a la montaña y al valle",
+        "Ropa de cama y toallas",
+        "WiFi gratuito",
+        "Parking gratuito"
+      ],
+      "experiences": [
+        "Amanecer panorámico en la cima",
+        "Observación de estrellas sin contaminación lumínica",
+        "Senderismo de alta montaña",
+        "Fotografía de paisaje",
+        "Zona de fogata"
+      ],
+      "is_available": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "cabins.cabin",
+    "pk": "la-cabana",
+    "fields": {
+      "name": "La Cabaña",
+      "short_name": "La Cabaña",
+      "tagline": "Calidez de madera, paz de montaña",
+      "description": "La Cabaña es perfecta para familias pequeñas o grupos de amigos que buscan el calor de la madera y la comodidad del campo. Levantada sobre pilotes en el bosque nativo, con porche amplio y vista a los árboles, esta cabaña rústica tiene 2 camas sencillas, baño privado con agua caliente y zona de comedor. El aroma del pino, el canto de los pájaros y el porche con mecedora hacen el resto. Incluye desayuno americano, parking gratuito y se admiten mascotas sin costo adicional.",
+      "location": "Bosque nativo · Ráquira · Boyacá",
+      "capacity": 4,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "size_sqm": 15,
+      "price_per_night": "320000.00",
+      "main_image": "cabins/main/308499071.jpg",
+      "photo_url": "",
+      "accent_color": "#8b6914",
+      "tint": "rgba(139,105,20,.08)",
+      "rating": "4.85",
+      "reviews_count": 98,
+      "amenities": [
+        "2 camas sencillas",
+        "Baño privado",
+        "Porche con vista al bosque",
+        "Zona de comedor",
+        "Agua caliente",
+        "Desayuno americano incluido",
+        "Ropa de cama y toallas",
+        "WiFi gratuito",
+        "Parking gratuito",
+        "Se admiten mascotas (gratis)"
+      ],
+      "experiences": [
+        "Caminata al bosque nativo",
+        "Visita a la cascada",
+        "Fogata nocturna",
+        "Avistamiento de aves",
+        "Sala de juegos",
+        "Tours a pie guiados"
+      ],
+      "is_available": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "cabins.cabinimage",
+    "pk": 1,
+    "fields": {
+      "cabin": "la-gruta",
+      "image": "cabins/gallery/308499075.jpg",
+      "image_url": "",
+      "caption": "La Gruta de noche bajo las estrellas",
+      "order": 1
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 2,
+    "fields": {
+      "cabin": "la-gruta",
+      "image": "cabins/gallery/424367070.jpg",
+      "image_url": "",
+      "caption": "Interior de La Gruta con tina en piedra",
+      "order": 2
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 3,
+    "fields": {
+      "cabin": "la-gruta",
+      "image": "cabins/gallery/424367095.jpg",
+      "image_url": "",
+      "caption": "Entrada a La Gruta",
+      "order": 3
+    }
+  },
+
+  {
+    "model": "cabins.cabinimage",
+    "pk": 4,
+    "fields": {
+      "cabin": "casa-del-arbol",
+      "image": "cabins/gallery/424730431.jpg",
+      "image_url": "",
+      "caption": "Interior con 1 cama doble entre los pinos",
+      "order": 1
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 5,
+    "fields": {
+      "cabin": "casa-del-arbol",
+      "image": "cabins/gallery/347870371.jpg",
+      "image_url": "",
+      "caption": "Casa del Árbol vista desde el bosque",
+      "order": 2
+    }
+  },
+
+  {
+    "model": "cabins.cabinimage",
+    "pk": 6,
+    "fields": {
+      "cabin": "el-mirador",
+      "image": "cabins/gallery/434466695.jpg",
+      "image_url": "",
+      "caption": "El Mirador en la cima de la montaña",
+      "order": 1
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 7,
+    "fields": {
+      "cabin": "el-mirador",
+      "image": "cabins/gallery/434466700.jpg",
+      "image_url": "",
+      "caption": "Cama con vista al valle desde El Mirador",
+      "order": 2
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 8,
+    "fields": {
+      "cabin": "el-mirador",
+      "image": "cabins/gallery/434466716.jpg",
+      "image_url": "",
+      "caption": "Vista panorámica de montañas y nubes",
+      "order": 3
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 9,
+    "fields": {
+      "cabin": "el-mirador",
+      "image": "cabins/gallery/434466729.jpg",
+      "image_url": "",
+      "caption": "Baño con ventanal panorámico al valle",
+      "order": 4
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 10,
+    "fields": {
+      "cabin": "el-mirador",
+      "image": "cabins/gallery/562907028.jpg",
+      "image_url": "",
+      "caption": "El Mirador bajo el cielo estrellado",
+      "order": 5
+    }
+  },
+
+  {
+    "model": "cabins.cabinimage",
+    "pk": 11,
+    "fields": {
+      "cabin": "la-cabana",
+      "image": "cabins/gallery/308499066.jpg",
+      "image_url": "",
+      "caption": "Interior de La Cabaña con 2 camas sencillas",
+      "order": 1
+    }
+  },
+  {
+    "model": "cabins.cabinimage",
+    "pk": 12,
+    "fields": {
+      "cabin": "la-cabana",
+      "image": "cabins/gallery/308499069.jpg",
+      "image_url": "",
+      "caption": "La Cabaña entre el bosque nativo",
+      "order": 2
+    }
+  }
+]

@@ -1,0 +1,41 @@
+# ── Python / Django ────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+/backend/staticfiles/
+/backend/media/
+
+# ── Node / Vite ────────────────────────────────────────────────
+node_modules/
+/frontend/dist/
+/frontend/.vite/
+npm-debug.log*
+
+# ── Entorno ────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.env
+
+# ── Sistema operativo ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs ──────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
