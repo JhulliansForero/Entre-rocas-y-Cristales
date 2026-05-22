@@ -182,6 +182,35 @@
 /* Padding horizontal responsivo (32px desktop → 16px mobile) */
 .rg-px { padding-left: 32px; padding-right: 32px; }
 
+/* Hero section — ocupa el viewport completo */
+.rg-hero-section {
+  min-height: calc(100svh - 73px);   /* resta la navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Indicador de scroll */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-faint);
+  font-size: 11px;
+  font-family: var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-top: 40px;
+  animation: bounce 2s ease-in-out infinite;
+  cursor: default;
+  user-select: none;
+}
+
 /* Grid definitions — desktop */
 .rg-hero         { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
 .rg-hero-img     { position: relative; height: 520px; }
@@ -212,10 +241,18 @@
 /* Mobile (≤ 768px) */
 @media (max-width: 768px) {
   /* Hero: imagen arriba, texto abajo */
-  .rg-hero                 { grid-template-columns: 1fr; gap: 24px; }
+  .rg-hero                 { grid-template-columns: 1fr; gap: 20px; }
   .rg-hero > *:first-child { order: 2; }
   .rg-hero > *:last-child  { order: 1; }
-  .rg-hero-img             { height: 280px; }
+  .rg-hero-img             { height: 240px; }
+
+  /* Hero section ocupa pantalla menos navbar */
+  .rg-hero-section {
+    min-height: calc(100svh - 73px);
+    padding-top: 24px !important;
+    padding-bottom: 16px !important;
+    justify-content: flex-start;
+  }
 
   /* Grids generales */
   .rg-3col, .rg-2col { grid-template-columns: 1fr; }

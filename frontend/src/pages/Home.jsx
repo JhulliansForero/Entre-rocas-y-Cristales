@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <div style={{ background: 'var(--color-cream)' }}>
       {/* ── HERO ── */}
-      <section style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 56, paddingBottom: 32 }} className="rg-px">
+      <section className="rg-hero-section rg-px" style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 48, paddingBottom: 32 }}>
         <div className="rg-hero">
           {/* Left */}
           <div>
@@ -149,8 +149,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Scroll hint */}
+      <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 32 }}>
+        <div className="scroll-hint">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+          Descubrir
+        </div>
+      </div>
+
       {/* ── AVAILABILITY BAR ── */}
-      <section style={{ maxWidth: 1280, margin: '32px auto 0' }} className="rg-px">
+      <section style={{ maxWidth: 1280, margin: '0 auto' }} className="rg-px">
         <AvailabilityBar onSearch={() => navigate('/cabinas')} />
       </section>
 
