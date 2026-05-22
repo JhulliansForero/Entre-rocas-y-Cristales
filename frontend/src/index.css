@@ -216,6 +216,13 @@
 .rg-hero-img     { position: relative; height: 520px; }
 .rg-3col         { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .rg-2col         { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+
+/* ── Carrusel swipeable (desktop = grid 3col, móvil = scroll horizontal) ── */
+.rg-swipe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
 .rg-philosophy   { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; }
 .rg-phil-pad     { padding: 80px 64px; }
 .rg-pillars      { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -233,6 +240,7 @@
 /* Tablet (≤ 1024px) */
 @media (max-width: 1024px) {
   .rg-3col   { grid-template-columns: repeat(2, 1fr); }
+  .rg-swipe  { grid-template-columns: repeat(2, 1fr); }
   .rg-stats4 { grid-template-columns: repeat(2, 1fr); }
   .rg-footer { grid-template-columns: 1fr 1fr; gap: 32px; }
   .rg-specs4 { grid-template-columns: repeat(2, 1fr); }
@@ -256,6 +264,29 @@
 
   /* Grids generales */
   .rg-3col, .rg-2col { grid-template-columns: 1fr; }
+
+  /* Carrusel horizontal swipeable en móvil */
+  .rg-swipe {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+  }
+  .rg-swipe::-webkit-scrollbar { display: none; }
+  .rg-swipe > * {
+    flex: none;
+    width: 78vw;
+    max-width: 300px;
+    scroll-snap-align: start;
+  }
 
   /* Filosofía */
   .rg-philosophy { grid-template-columns: 1fr; gap: 28px; }

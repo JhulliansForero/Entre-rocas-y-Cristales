@@ -70,8 +70,6 @@ export default function Home() {
     return () => clearInterval(timerRef.current)
   }, [])
 
-  const first3 = cabins.slice(0, 3)
-  const last2  = cabins.slice(3)
 
   return (
     <div style={{ background: 'var(--color-cream)' }}>
@@ -186,14 +184,9 @@ export default function Home() {
           <div style={{ display: 'flex', justifyContent: 'center', padding: '80px 0' }}><Spinner size="lg" /></div>
         ) : (
           <>
-            <div className="rg-3col">
-              {first3.map(c => <HomeCabinCard key={c.id || c.slug} cabin={c} onClick={() => navigate(`/cabinas/${c.id || c.slug}`)} />)}
+            <div className="rg-swipe">
+              {cabins.map(c => <HomeCabinCard key={c.id || c.slug} cabin={c} onClick={() => navigate(`/cabinas/${c.id || c.slug}`)} />)}
             </div>
-            {last2.length > 0 && (
-              <div className="rg-2col" style={{ marginTop: 28 }}>
-                {last2.map(c => <HomeCabinCard key={c.id || c.slug} cabin={c} wide onClick={() => navigate(`/cabinas/${c.id || c.slug}`)} />)}
-              </div>
-            )}
           </>
         )}
       </section>
