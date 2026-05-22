@@ -62,7 +62,7 @@ export default function ManageReservations() {
 
   return (
     <div style={{ background: 'var(--color-cream)', minHeight: '100vh' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '56px 32px 0' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 56 }} className="rg-px">
 
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 36, gap: 16, flexWrap: 'wrap' }}>
@@ -91,7 +91,7 @@ export default function ManageReservations() {
         </div>
 
         {/* Stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 32 }}>
+        <div className="rg-stats4">
           <StatCard label="Total en página" value={reservations.length} />
           <StatCard label="Activas"         value={active} />
           <StatCard label="Canceladas"      value={cancelled} />

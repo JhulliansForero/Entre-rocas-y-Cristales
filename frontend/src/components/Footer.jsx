@@ -21,8 +21,8 @@ function FooterCol({ title, links }) {
 export default function Footer() {
   return (
     <footer style={{ background: 'var(--color-forest)', color: 'var(--color-paper)', marginTop: 80 }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '64px 32px 32px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 48 }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 64, paddingBottom: 32 }} className="rg-px">
+        <div className="rg-footer">
           <div>
             <Wordmark size="lg" variant="light" />
             <p className="font-display-i" style={{ marginTop: 24, fontSize: 18, lineHeight: 1.5, opacity: .85, maxWidth: 320 }}>
@@ -37,6 +37,7 @@ export default function Footer() {
           marginTop: 56, paddingTop: 24,
           borderTop: '1px solid rgba(248,245,232,.14)',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          flexWrap: 'wrap', gap: 12,
           fontSize: 12, opacity: .65,
         }}>
           <span>© {new Date().getFullYear()} Entre Rocas y Cristales · Alojamiento rural sostenible</span>

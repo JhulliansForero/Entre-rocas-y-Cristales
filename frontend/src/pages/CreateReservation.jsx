@@ -60,7 +60,7 @@ export default function CreateReservation() {
 
   return (
     <div style={{ background: 'var(--color-cream)', minHeight: '100vh' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '56px 32px 80px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', paddingTop: 56, paddingBottom: 80 }} className="rg-px">
 
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <SectionEyebrow>Paso final</SectionEyebrow>
@@ -75,7 +75,7 @@ export default function CreateReservation() {
           </div>
         )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 32, alignItems: 'start' }}>
+        <div className="rg-confirm">
 
           {/* ── Left: form ── */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -143,7 +143,7 @@ export default function CreateReservation() {
           </div>
 
           {/* ── Right: price summary ── */}
-          <div style={{ position: 'sticky', top: 24 }}>
+          <div className="rg-sticky" style={{ position: 'sticky', top: 24 }}>
             <div className="card" style={{ padding: 28 }}>
               <h3 className="font-display" style={{ fontSize: 22, marginBottom: 22 }}>Resumen del pago</h3>
 

@@ -70,8 +70,8 @@ export default function Home() {
   return (
     <div style={{ background: 'var(--color-cream)' }}>
       {/* ── HERO ── */}
-      <section style={{ maxWidth: 1280, margin: '0 auto', padding: '56px 32px 32px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 56, alignItems: 'center' }}>
+      <section style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 56, paddingBottom: 32 }} className="rg-px">
+        <div className="rg-hero">
           {/* Left */}
           <div>
             <SectionEyebrow>Alojamiento rural · Boyacá</SectionEyebrow>
@@ -91,17 +91,17 @@ export default function Home() {
             </div>
 
             {/* Trust strip */}
-            <div style={{ marginTop: 56, display: 'flex', gap: 36, alignItems: 'center', flexWrap: 'wrap' }}>
+            <div className="rg-trust" style={{ marginTop: 56, display: 'flex', gap: 36, alignItems: 'center', flexWrap: 'wrap' }}>
               <Stat n="4.96" label="rating promedio" />
-              <div style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
+              <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
               <Stat n="4" label="cabañas únicas" />
-              <div style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
+              <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
               <Stat n="2.8k+" label="huéspedes desde 2021" />
             </div>
           </div>
 
           {/* Right — slideshow */}
-          <div style={{ position: 'relative', height: 520 }}>
+          <div className="rg-hero-img">
             <div style={{
               position: 'absolute', inset: 0, borderRadius: 32,
               overflow: 'hidden', boxShadow: 'var(--shadow-lg)',
@@ -150,13 +150,13 @@ export default function Home() {
       </section>
 
       {/* ── AVAILABILITY BAR ── */}
-      <section style={{ maxWidth: 1280, margin: '32px auto 0', padding: '0 32px' }}>
+      <section style={{ maxWidth: 1280, margin: '32px auto 0' }} className="rg-px">
         <AvailabilityBar onSearch={() => navigate('/cabinas')} />
       </section>
 
       {/* ── CABIN GRID ── */}
-      <section style={{ maxWidth: 1280, margin: '96px auto 0', padding: '0 32px' }}>
-        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', marginBottom: 36 }}>
+      <section style={{ maxWidth: 1280, margin: '96px auto 0' }} className="rg-px">
+        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', marginBottom: 36, flexWrap: 'wrap', gap: 12 }}>
           <div>
             <SectionEyebrow>Nuestras cabañas</SectionEyebrow>
             <h2 className="font-display" style={{ fontSize: 'clamp(36px, 4vw, 56px)', margin: '12px 0 6px', letterSpacing: '-.02em' }}>
@@ -174,11 +174,11 @@ export default function Home() {
           <div style={{ display: 'flex', justifyContent: 'center', padding: '80px 0' }}><Spinner size="lg" /></div>
         ) : (
           <>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+            <div className="rg-3col">
               {first3.map(c => <HomeCabinCard key={c.id || c.slug} cabin={c} onClick={() => navigate(`/cabinas/${c.id || c.slug}`)} />)}
             </div>
             {last2.length > 0 && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 28, marginTop: 28 }}>
+              <div className="rg-2col" style={{ marginTop: 28 }}>
                 {last2.map(c => <HomeCabinCard key={c.id || c.slug} cabin={c} wide onClick={() => navigate(`/cabinas/${c.id || c.slug}`)} />)}
               </div>
             )}
@@ -187,10 +187,9 @@ export default function Home() {
       </section>
 
       {/* ── PHILOSOPHY ── */}
-      <section style={{ maxWidth: 1280, margin: '120px auto 0', padding: '0 32px' }}>
-        <div style={{
+      <section style={{ maxWidth: 1280, margin: '120px auto 0' }} className="rg-px">
+        <div className="rg-philosophy rg-phil-pad" style={{
           background: 'var(--color-paper)', borderRadius: 32,
-          padding: '80px 64px', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 64,
           border: '1px solid var(--color-bone)',
         }}>
           <div>
@@ -204,7 +203,7 @@ export default function Home() {
               Nuestras cabañas son privadas, sin vecinos a la vista.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div className="rg-pillars">
             {PILLARS.map(p => (
               <div key={p.title}>
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: 'var(--color-fern)', color: 'var(--color-forest)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
@@ -240,27 +239,30 @@ function HomeCabinCard({ cabin, wide, onClick }) {
   const imgUrl   = cabin.main_image_url
 
   return (
-    <button onClick={onClick} style={{
-      background: 'var(--color-snow)', border: '1px solid var(--color-bone)',
-      borderRadius: 24, padding: 0,
-      textAlign: 'left', cursor: 'pointer',
-      transition: 'transform .2s ease, box-shadow .2s ease',
-      display: 'flex', flexDirection: wide ? 'row' : 'column',
-      alignItems: 'stretch',
-      width: '100%', overflow: 'hidden',
-    }}
+    <button onClick={onClick}
+      className={wide ? 'rg-cabin-wide' : ''}
+      style={{
+        background: 'var(--color-snow)', border: '1px solid var(--color-bone)',
+        borderRadius: 24, padding: 0,
+        textAlign: 'left', cursor: 'pointer',
+        transition: 'transform .2s ease, box-shadow .2s ease',
+        display: wide ? undefined : 'flex',
+        flexDirection: wide ? undefined : 'column',
+        alignItems: 'stretch',
+        width: '100%', overflow: 'hidden',
+      }}
       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--shadow-md)' }}
       onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}>
 
       {/* Image */}
-      <div style={{
-        flex: 'none',
-        width: wide ? 200 : '100%',
-        height: wide ? 'auto' : 180,
-        minHeight: wide ? 180 : undefined,
-        background: 'var(--color-paper)',
-        position: 'relative', overflow: 'hidden',
-      }}>
+      <div className={wide ? 'rg-cabin-wide-img' : ''}
+        style={{
+          flex: 'none',
+          width: wide ? undefined : '100%',
+          height: wide ? undefined : 180,
+          background: 'var(--color-paper)',
+          position: 'relative', overflow: 'hidden',
+        }}>
         {imgUrl ? (
           <img src={imgUrl} alt={cabin.name}
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: 180 }} />
@@ -302,10 +304,10 @@ function HomeCabinCard({ cabin, wide, onClick }) {
 
 function AvailabilityBar({ onSearch }) {
   return (
-    <div style={{
+    <div className="rg-avail" style={{
       background: 'var(--color-snow)', borderRadius: 20,
       border: '1px solid var(--color-bone)', boxShadow: 'var(--shadow-md)',
-      padding: 14, display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1fr auto', gap: 4, alignItems: 'stretch',
+      padding: 14,
     }}>
       <BarField label="Cabaña"    value="Cualquier cabaña"  icon="M3 11l9-7 9 7v9H3z M8 20v-6h8v6" />
       <BarField label="Llegada"   value="Selecciona fecha"  icon="M3 6h18v15H3z M3 10h18 M8 3v4 M16 3v4" />

@@ -201,14 +201,7 @@ export default function CabinDetail() {
       )}
 
       {/* Gallery grid — clic en cualquier foto abre el lightbox */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '2fr 1fr 1fr',
-        gridTemplateRows: '260px 260px',
-        gap: 4,
-        maxHeight: 524,
-        overflow: 'hidden',
-      }}>
+      <div className="rg-gallery">
         {Array.from({ length: 5 }, (_, i) => {
           const img = allImgs[i]
           return (
@@ -251,8 +244,8 @@ export default function CabinDetail() {
       </div>
 
       {/* Header */}
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 32px 0' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 24 }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 40 }} className="rg-px">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 24, flexWrap: 'wrap' }}>
           <div>
             <SectionEyebrow>Cabaña · {(cabin.location || '').split('·')[0].trim()}</SectionEyebrow>
             <h1 className="font-display" style={{ fontSize: 'clamp(36px, 4vw, 56px)', margin: '14px 0 4px', lineHeight: 1.05 }}>
@@ -281,9 +274,8 @@ export default function CabinDetail() {
       </div>
 
       {/* Content grid */}
-      <div style={{
-        maxWidth: 1280, margin: '40px auto 0', padding: '0 32px 80px',
-        display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48, alignItems: 'start',
+      <div className="rg-detail rg-px" style={{
+        maxWidth: 1280, margin: '40px auto 0', paddingBottom: 80,
       }}>
 
         {/* ── Left column ── */}
@@ -299,7 +291,7 @@ export default function CabinDetail() {
           {/* Spec cards */}
           <section>
             <h2 className="font-display" style={{ fontSize: 28, marginBottom: 18 }}>Características</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
+            <div className="rg-specs4">
               <SpecCard icon="🛏" label="Camas" value={cabin.bedrooms} />
               <SpecCard icon="👥" label="Capacidad"   value={`${cabin.capacity} pers.`} />
               <SpecCard icon="📐" label="Superficie"  value={`${cabin.size_sqm || cabin.size} m²`} />
@@ -337,7 +329,7 @@ export default function CabinDetail() {
         </div>
 
         {/* ── Right column — Booking sidebar ── */}
-        <aside style={{ position: 'sticky', top: 24 }}>
+        <aside className="rg-sticky" style={{ position: 'sticky', top: 24 }}>
           <div className="card" style={{ padding: 28 }}>
 
             {/* Price */}

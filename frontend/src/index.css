@@ -173,3 +173,109 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* ─────────────────────────────────────────
+   Responsive layout helpers
+   Usa estas clases en lugar de inline grid
+   ───────────────────────────────────────── */
+
+/* Grid definitions — desktop */
+.rg-hero         { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.rg-hero-img     { position: relative; height: 520px; }
+.rg-3col         { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.rg-2col         { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.rg-philosophy   { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; }
+.rg-phil-pad     { padding: 80px 64px; }
+.rg-pillars      { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.rg-avail        { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr auto; gap: 4px; align-items: stretch; }
+.rg-stats4       { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.rg-detail       { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+.rg-gallery      { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 4px; max-height: 524px; overflow: hidden; }
+.rg-catalog-card { display: grid; grid-template-columns: 260px 1fr; overflow: hidden; }
+.rg-confirm      { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; }
+.rg-specs4       { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.rg-footer       { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; }
+.rg-cabin-wide   { display: flex; flex-direction: row; align-items: stretch; }
+.rg-cabin-wide-img { flex: none; width: 200px; min-height: 180px; }
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  .rg-3col   { grid-template-columns: repeat(2, 1fr); }
+  .rg-stats4 { grid-template-columns: repeat(2, 1fr); }
+  .rg-footer { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .rg-specs4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  /* Hero: imagen arriba, texto abajo */
+  .rg-hero                 { grid-template-columns: 1fr; gap: 24px; }
+  .rg-hero > *:first-child { order: 2; }
+  .rg-hero > *:last-child  { order: 1; }
+  .rg-hero-img             { height: 280px; }
+
+  /* Grids generales */
+  .rg-3col, .rg-2col { grid-template-columns: 1fr; }
+
+  /* Filosofía */
+  .rg-philosophy { grid-template-columns: 1fr; gap: 28px; }
+  .rg-phil-pad   { padding: 36px 20px; }
+
+  /* Barra de disponibilidad: 2 cols */
+  .rg-avail { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rg-avail > *:nth-child(2),
+  .rg-avail > *:nth-child(4) { display: none; }
+
+  /* Stats */
+  .rg-stats4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Detalle de cabaña */
+  .rg-detail { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Galería: solo primera foto */
+  .rg-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: 280px;
+    max-height: 280px;
+  }
+  .rg-gallery > * { display: none; }
+  .rg-gallery > *:first-child { display: block; grid-row: span 1 !important; }
+
+  /* Tarjeta catálogo */
+  .rg-catalog-card { grid-template-columns: 1fr; }
+
+  /* Formulario confirmar reserva */
+  .rg-confirm { grid-template-columns: 1fr; }
+
+  /* Specs 4 en 2 */
+  .rg-specs4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Footer */
+  .rg-footer { grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* Cabaña wide: columna en mobile */
+  .rg-cabin-wide     { flex-direction: column; }
+  .rg-cabin-wide-img { width: 100%; height: 200px; min-height: 200px; }
+
+  /* Sidebar sticky → static en mobile */
+  .rg-sticky { position: static !important; top: auto !important; }
+
+  /* Padding horizontal de secciones */
+  .rg-px { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Trust strip en hero */
+  .rg-trust { gap: 16px !important; flex-wrap: wrap; }
+  .rg-trust-div { display: none; }
+}
+
+/* Móvil pequeño (≤ 480px) */
+@media (max-width: 480px) {
+  .rg-pillars { grid-template-columns: 1fr; }
+  .rg-footer  { grid-template-columns: 1fr; gap: 28px; }
+  .rg-avail   { grid-template-columns: 1fr; }
+  .rg-avail > *:nth-child(2),
+  .rg-avail > *:nth-child(4) { display: flex; }
+  .rg-avail > *:nth-child(2),
+  .rg-avail > *:nth-child(3),
+  .rg-avail > *:nth-child(4) { display: none; }
+}

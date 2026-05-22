@@ -157,6 +157,13 @@ export default function Navbar() {
           {user ? (
             <>
               <Link to="/perfil" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Mi perfil</Link>
+              {user.role === 'admin' && (<>
+                <div style={{ height: 1, background: 'var(--color-bone)', margin: '4px 0' }} />
+                <Link to="/admin/reservas" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Reservas</Link>
+                <Link to="/admin/cabanas" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Gestionar cabañas</Link>
+                <Link to="/admin/analiticas" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Análisis de ventas</Link>
+                <div style={{ height: 1, background: 'var(--color-bone)', margin: '4px 0' }} />
+              </>)}
               <button onClick={() => { setMobileOpen(false); handleLogout() }} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-danger)', background: 'none', border: 0, cursor: 'pointer', textAlign: 'left' }}>Cerrar sesión</button>
             </>
           ) : (

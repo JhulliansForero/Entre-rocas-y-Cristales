@@ -46,7 +46,7 @@ export default function Catalog() {
 
   return (
     <div style={{ background: 'var(--color-cream)' }}>
-      <section style={{ maxWidth: 1280, margin: '0 auto', padding: '56px 32px 24px' }}>
+      <section style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 56, paddingBottom: 24 }} className="rg-px">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', gap: 32, flexWrap: 'wrap' }}>
           <div>
             <SectionEyebrow>Catálogo · {allCabins.length} cabañas</SectionEyebrow>
@@ -61,9 +61,9 @@ export default function Catalog() {
       </section>
 
       {/* Filter bar */}
-      <section style={{ maxWidth: 1280, margin: '32px auto 0', padding: '0 32px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 0', borderTop: '1px solid var(--color-bone)', borderBottom: '1px solid var(--color-bone)' }}>
-          <div style={{ display: 'flex', gap: 6 }}>
+      <section style={{ maxWidth: 1280, margin: '32px auto 0' }} className="rg-px">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 0', borderTop: '1px solid var(--color-bone)', borderBottom: '1px solid var(--color-bone)', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
             {[['all','Todas'],['couples','Para parejas'],['family','Grupos y familia']].map(([k, l]) => (
               <button key={k} onClick={() => setFilter(k)} style={{
                 background: filter === k ? 'var(--color-forest)' : 'transparent',
@@ -90,7 +90,7 @@ export default function Catalog() {
         </div>
       </section>
 
-      <section style={{ maxWidth: 1280, margin: '32px auto 0', padding: '0 32px' }}>
+      <section style={{ maxWidth: 1280, margin: '32px auto 0' }} className="rg-px">
         {loading ? (
           <div style={{ display: 'flex', justifyContent: 'center', padding: '80px 0' }}><Spinner size="lg" /></div>
         ) : list.length === 0 ? (
@@ -99,7 +99,7 @@ export default function Catalog() {
             <button className="btn btn-secondary" onClick={() => setFilter('all')}>Ver todas</button>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 28 }}>
+          <div className="rg-2col">
             {list.map(c => (
               <CatalogCard key={c.id || c.slug} cabin={c}
                 onClick={() => navigate(`/cabinas/${c.id || c.slug}`)} />
@@ -120,9 +120,9 @@ function CatalogCard({ cabin, onClick }) {
   const imgUrl  = cabin.main_image_url
 
   return (
-    <div style={{
+    <div className="rg-catalog-card" style={{
       background: 'var(--color-snow)', border: '1px solid var(--color-bone)',
-      borderRadius: 24, overflow: 'hidden', display: 'grid', gridTemplateColumns: '260px 1fr',
+      borderRadius: 24,
     }}>
       <div style={{ position: 'relative', minHeight: 220, overflow: 'hidden', background: 'var(--color-paper)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         {imgUrl ? (
