@@ -22,3 +22,15 @@ export const addGalleryImg = (id, file, caption = '', order = 0) => {
   return api.post(`/cabins/${id}/add_image/`, fd, { headers: { 'Content-Type': 'multipart/form-data' } })
 }
 export const deleteGalleryImg = (imageId) => api.delete(`/cabins/images/${imageId}/`)
+
+// ── Hero images ────────────────────────────────────────────────
+export const getHeroImages    = ()         => api.get('/cabins/hero-images/')
+export const uploadHeroImage  = (file, caption = '', order = 0) => {
+  const fd = new FormData()
+  fd.append('image', file)
+  fd.append('caption', caption)
+  fd.append('order', order)
+  return api.post('/cabins/hero-images/', fd, { headers: { 'Content-Type': 'multipart/form-data' } })
+}
+export const updateHeroImage  = (id, data) => api.patch(`/cabins/hero-images/${id}/`, data)
+export const deleteHeroImage  = (id)       => api.delete(`/cabins/hero-images/${id}/`)

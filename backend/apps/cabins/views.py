@@ -8,8 +8,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from apps.users.permissions import IsAdminRole
-from .models import Cabin, CabinImage
-from .serializers import CabinDetailSerializer, CabinImageSerializer, CabinListSerializer
+from .models import Cabin, CabinImage, HeroImage
+from .serializers import CabinDetailSerializer, CabinImageSerializer, CabinListSerializer, HeroImageSerializer
 
 
 class CabinViewSet(viewsets.ModelViewSet):
@@ -120,6 +120,32 @@ class CabinImageDestroyView(generics.DestroyAPIView):
     """DELETE /api/cabins/images/<pk>/"""
     queryset         = CabinImage.objects.all()
     permission_classes = [IsAdminRole]
+
+    def perform_destroy(self, instance):
+        if instance.image:
+            instance.image.delete(save=False)
+        instance.delete()
+
+
+class HeroImageViewSet(viewsets.ModelViewSet):
+    """
+    GET  /api/hero-images/        → lista (público)
+    POST /api/hero-images/        → subir imagen (admin, multipart)
+    PATCH/PUT /api/hero-images/id/ → actualizar orden/caption/active (admin)
+    DELETE /api/hero-images/id/   → eliminar (admin)
+    """
+    serializer_class = HeroImageSerializer
+    parser_classes   = [MultiPartParser, FormParser]
+
+    def get_queryset(self):
+        if self.request.user and getattr(self.request.user, "role", None) == "admin":
+            return HeroImage.objects.all()
+        return HeroImage.objects.filter(active=True)
+
+    def get_permissions(self):
+        if self.action in ["list", "retrieve"]:
+            return [AllowAny()]
+        return [IsAdminRole()]
 
     def perform_destroy(self, instance):
         if instance.image:

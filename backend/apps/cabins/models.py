@@ -54,3 +54,19 @@ class CabinImage(models.Model):
 
     def __str__(self):
         return f"{self.cabin.short_name} — imagen {self.order}"
+
+
+class HeroImage(models.Model):
+    image      = models.ImageField(upload_to="hero/")
+    caption    = models.CharField(max_length=200, blank=True)
+    order      = models.PositiveIntegerField(default=0)
+    active     = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering            = ["order", "created_at"]
+        verbose_name        = "imagen del hero"
+        verbose_name_plural = "imágenes del hero"
+
+    def __str__(self):
+        return f"Hero imagen {self.pk} — {self.caption or 'sin título'}"

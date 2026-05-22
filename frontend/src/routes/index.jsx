@@ -16,6 +16,7 @@ import AdminCabinPhotos          from '../pages/AdminCabinPhotos'
 import AdminCreateCabin          from '../pages/AdminCreateCabin'
 import AdminCreateReservation    from '../pages/AdminCreateReservation'
 import AdminAnalytics            from '../pages/AdminAnalytics'
+import AdminHeroImages           from '../pages/AdminHeroImages'
 import Login              from '../pages/Login'
 import Register           from '../pages/Register'
 import Profile            from '../pages/Profile'
@@ -68,6 +69,7 @@ export default function AppRoutes() {
         <Route path="admin/cabanas/nueva"    element={<AdminRoute><AdminCreateCabin /></AdminRoute>} />
         <Route path="admin/cabanas/:id"      element={<AdminRoute><AdminCabinPhotos /></AdminRoute>} />
         <Route path="admin/analiticas"       element={<AdminRoute><AdminAnalytics /></AdminRoute>} />
+        <Route path="admin/hero"             element={<AdminRoute><AdminHeroImages /></AdminRoute>} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

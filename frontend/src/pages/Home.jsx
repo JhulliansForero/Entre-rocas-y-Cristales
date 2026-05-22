@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getCabins } from '../services/cabins'
+import { getCabins, getHeroImages } from '../services/cabins'
 import { fmtCOP } from '../utils/format'
 import SectionEyebrow from '../components/SectionEyebrow'
 import CabinBadge from '../components/CabinBadge'
@@ -34,10 +34,11 @@ const PILLARS = [
 
 export default function Home() {
   const navigate = useNavigate()
-  const [cabins,  setCabins]  = useState([])
-  const [loading, setLoading] = useState(true)
-  const [slideIdx, setSlideIdx] = useState(0)
-  const [slideIn,  setSlideIn]  = useState(true)
+  const [cabins,    setCabins]    = useState([])
+  const [loading,   setLoading]   = useState(true)
+  const [heroImgs,  setHeroImgs]  = useState(HERO_IMGS)  // fallback estático
+  const [slideIdx,  setSlideIdx]  = useState(0)
+  const [slideIn,   setSlideIn]   = useState(true)
   const timerRef = useRef(null)
 
   useEffect(() => {
@@ -45,6 +46,16 @@ export default function Home() {
       .then(r => { const list = r.data.results ?? r.data; setCabins(list) })
       .catch(() => {})
       .finally(() => setLoading(false))
+    // Cargar imágenes del hero desde la API; si falla, usar las estáticas
+    getHeroImages()
+      .then(r => {
+        const imgs = (r.data.results ?? r.data)
+          .filter(img => img.active)
+          .map(img => img.image_url)
+          .filter(Boolean)
+        if (imgs.length > 0) setHeroImgs(imgs)
+      })
+      .catch(() => {}) // fallback: HERO_IMGS estático ya está en el estado inicial
   }, [])
 
   /* Rotación hero cada 6 s con crossfade lento */
@@ -52,7 +63,7 @@ export default function Home() {
     timerRef.current = setInterval(() => {
       setSlideIn(false)
       setTimeout(() => {
-        setSlideIdx(i => (i + 1) % HERO_IMGS.length)
+        setSlideIdx(i => (i + 1) % heroImgs.length)
         setSlideIn(true)
       }, 700)
     }, 6000)
@@ -103,7 +114,7 @@ export default function Home() {
               overflow: 'hidden', boxShadow: 'var(--shadow-lg)',
               background: 'var(--color-bark)',
             }}>
-              {HERO_IMGS.map((src, i) => (
+              {heroImgs.map((src, i) => (
                 <img key={src} src={src} alt="Entre Rocas y Cristales"
                   style={{
                     position: 'absolute', inset: 0,
@@ -124,7 +135,7 @@ export default function Home() {
                 position: 'absolute', bottom: 16, left: 0, right: 0,
                 display: 'flex', justifyContent: 'center', gap: 6,
               }}>
-                {HERO_IMGS.map((_, i) => (
+                {heroImgs.map((_, i) => (
                   <button key={i}
                     onClick={() => { setSlideIn(false); setTimeout(() => { setSlideIdx(i); setSlideIn(true) }, 400) }}
                     style={{

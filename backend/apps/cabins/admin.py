@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cabin, CabinImage
+from .models import Cabin, CabinImage, HeroImage
 
 
 class CabinImageInline(admin.TabularInline):
@@ -35,3 +35,11 @@ class CabinAdmin(admin.ModelAdmin):
         }),
     )
     readonly_fields = ["created_at", "updated_at"]
+
+
+@admin.register(HeroImage)
+class HeroImageAdmin(admin.ModelAdmin):
+    list_display  = ["id", "caption", "order", "active", "created_at"]
+    list_editable = ["order", "active"]
+    list_filter   = ["active"]
+    ordering      = ["order", "created_at"]

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cabin, CabinImage
+from .models import Cabin, CabinImage, HeroImage
 
 
 class CabinImageSerializer(serializers.ModelSerializer):
@@ -68,3 +68,18 @@ class CabinDetailSerializer(serializers.ModelSerializer):
             if request:
                 return request.build_absolute_uri(obj.main_image.url)
         return None
+
+
+class HeroImageSerializer(serializers.ModelSerializer):
+    image_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model  = HeroImage
+        fields = ["id", "image", "image_url", "caption", "order", "active", "created_at"]
+        read_only_fields = ["created_at"]
+
+    def get_image_url(self, obj):
+        request = self.context.get("request")
+        if request:
+            return request.build_absolute_uri(obj.image.url)
+        return obj.image.url

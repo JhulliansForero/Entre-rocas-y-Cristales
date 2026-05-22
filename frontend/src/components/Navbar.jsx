@@ -117,6 +117,10 @@ export default function Navbar() {
                       style={{ display: 'flex', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 14, color: 'var(--color-ink)', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>
                       Análisis de ventas
                     </Link>
+                    <Link to="/admin/hero" onClick={() => setUserOpen(false)}
+                      style={{ display: 'flex', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 14, color: 'var(--color-ink)', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>
+                      Fotos del inicio
+                    </Link>
                   </>)}
                   <button onClick={() => { setUserOpen(false); handleLogout() }}
                     style={{ display: 'flex', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 14, color: 'var(--color-danger)', background: 'none', border: 0, cursor: 'pointer', width: '100%', fontFamily: 'var(--font-body)' }}>
@@ -162,6 +166,7 @@ export default function Navbar() {
                 <Link to="/admin/reservas" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Reservas</Link>
                 <Link to="/admin/cabanas" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Gestionar cabañas</Link>
                 <Link to="/admin/analiticas" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Análisis de ventas</Link>
+                <Link to="/admin/hero" onClick={() => setMobileOpen(false)} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-bark)', textDecoration: 'none' }}>Fotos del inicio</Link>
                 <div style={{ height: 1, background: 'var(--color-bone)', margin: '4px 0' }} />
               </>)}
               <button onClick={() => { setMobileOpen(false); handleLogout() }} style={{ padding: '10px 14px', borderRadius: 12, fontSize: 14, fontFamily: 'var(--font-body)', color: 'var(--color-danger)', background: 'none', border: 0, cursor: 'pointer', textAlign: 'left' }}>Cerrar sesión</button>
