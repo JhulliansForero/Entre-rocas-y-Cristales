@@ -179,6 +179,9 @@
    Usa estas clases en lugar de inline grid
    ───────────────────────────────────────── */
 
+/* Padding horizontal responsivo (32px desktop → 16px mobile) */
+.rg-px { padding-left: 32px; padding-right: 32px; }
+
 /* Grid definitions — desktop */
 .rg-hero         { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
 .rg-hero-img     { position: relative; height: 520px; }
