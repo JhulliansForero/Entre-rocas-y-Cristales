@@ -65,106 +65,90 @@ export default function Home() {
   return (
     <div style={{ background: 'var(--color-cream)' }}>
 
-      {/* ── HERO — fondo completo con slideshow ── */}
-      <section style={{
-        position: 'relative',
-        minHeight: 'calc(100svh - 73px)',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-      }}>
-        {/* Imágenes de fondo con crossfade */}
-        {HERO_IMGS.map((src, i) => (
-          <img key={src} src={src} alt=""
-            style={{
-              position: 'absolute', inset: 0,
-              width: '100%', height: '100%',
-              objectFit: 'cover',
-              opacity: i === slideIdx ? (slideIn ? 1 : 0) : 0,
-              transition: 'opacity 0.8s ease',
-              zIndex: 0,
-            }} />
-        ))}
+      {/* ── HERO ── */}
+      <section className="rg-hero-section rg-px" style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 48, paddingBottom: 32 }}>
+        <div className="rg-hero">
+          {/* Left */}
+          <div>
+            <SectionEyebrow>Alojamiento rural · Boyacá</SectionEyebrow>
+            <h1 className="font-display" style={{ fontSize: 'clamp(48px, 5.5vw, 76px)', lineHeight: 1.02, margin: '20px 0 24px', letterSpacing: '-0.02em', color: 'var(--color-bark)' }}>
+              Un refugio
+              <br />
+              <span className="font-display-i" style={{ color: 'var(--color-moss)' }}>entre rocas, cristales</span>
+              <br />
+              y silencio profundo.
+            </h1>
+            <p style={{ fontSize: 17, color: 'var(--color-muted)', maxWidth: 460, marginBottom: 36 }}>
+              Cuatro cabañas únicas escondidas en un valle de minerales y bosque alto en Güicán, Boyacá. Sin recepción, sin pantallas: solo madera, roca y el sonido del riachuelo.
+            </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <button className="btn btn-primary btn-lg" onClick={() => navigate('/cabinas')}>Ver disponibilidad</button>
+              <button className="btn btn-secondary btn-lg" onClick={() => navigate('/cabinas')}>Conocer las cabañas →</button>
+            </div>
 
-        {/* Overlay: más oscuro abajo y a la izquierda para legibilidad del texto */}
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 1,
-          background: 'linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.45) 45%, rgba(0,0,0,.22) 100%)',
-          pointerEvents: 'none',
-        }} />
-
-        {/* Contenido sobre el fondo */}
-        <div style={{
-          position: 'relative', zIndex: 2,
-          maxWidth: 1280, margin: '0 auto', width: '100%',
-        }} className="rg-px">
-          <SectionEyebrow color="rgba(255,255,255,.75)">
-            Alojamiento rural · Boyacá
-          </SectionEyebrow>
-          <h1 className="font-display" style={{
-            fontSize: 'clamp(44px, 6vw, 82px)', lineHeight: 1.02,
-            margin: '18px 0 22px', letterSpacing: '-0.02em',
-            color: '#ffffff', maxWidth: 680,
-          }}>
-            Un refugio
-            <br />
-            <span className="font-display-i" style={{ color: 'rgba(215,222,198,.95)' }}>entre rocas, cristales</span>
-            <br />
-            y silencio profundo.
-          </h1>
-          <p style={{ fontSize: 17, color: 'rgba(255,255,255,.82)', maxWidth: 460, marginBottom: 36, lineHeight: 1.65 }}>
-            Cuatro cabañas únicas escondidas en un valle de minerales y bosque alto en Güicán, Boyacá. Sin recepción, sin pantallas: solo madera, roca y el sonido del riachuelo.
-          </p>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <button className="btn btn-primary btn-lg" onClick={() => navigate('/cabinas')}>Ver disponibilidad</button>
-            <button className="btn btn-lg"
-              onClick={() => navigate('/cabinas')}
-              style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '1px solid rgba(255,255,255,.35)', backdropFilter: 'blur(4px)' }}>
-              Conocer las cabañas →
-            </button>
+            {/* Trust strip */}
+            <div className="rg-trust" style={{ marginTop: 56, display: 'flex', gap: 36, alignItems: 'center', flexWrap: 'wrap' }}>
+              <Stat n="4.96" label="rating promedio" />
+              <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
+              <Stat n="4" label="cabañas únicas" />
+              <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
+              <Stat n="2.8k+" label="huéspedes desde 2021" />
+            </div>
           </div>
 
-          {/* Trust strip */}
-          <div className="rg-trust" style={{ marginTop: 52, display: 'flex', gap: 36, alignItems: 'center', flexWrap: 'wrap' }}>
-            <Stat n="4.96" label="rating promedio" light />
-            <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'rgba(255,255,255,.25)' }} />
-            <Stat n="4" label="cabañas únicas" light />
-            <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'rgba(255,255,255,.25)' }} />
-            <Stat n="2.8k+" label="huéspedes desde 2021" light />
-          </div>
-        </div>
-
-        {/* Dots del slideshow */}
-        <div style={{
-          position: 'absolute', bottom: 80, left: 0, right: 0, zIndex: 3,
-          display: 'flex', justifyContent: 'center', gap: 8,
-        }}>
-          {HERO_IMGS.map((_, i) => (
-            <button key={i}
-              onClick={() => { setSlideIn(false); setTimeout(() => { setSlideIdx(i); setSlideIn(true) }, 400) }}
-              style={{
-                width: i === slideIdx ? 24 : 7, height: 7,
-                borderRadius: 4, border: 0, cursor: 'pointer', padding: 0,
-                background: i === slideIdx ? '#fff' : 'rgba(255,255,255,.4)',
-                transition: 'width .3s, background .3s',
+          {/* Right — slideshow */}
+          <div className="rg-hero-img">
+            <div style={{
+              position: 'absolute', inset: 0, borderRadius: 32,
+              overflow: 'hidden', boxShadow: 'var(--shadow-lg)',
+              background: 'var(--color-bark)',
+            }}>
+              {HERO_IMGS.map((src, i) => (
+                <img key={src} src={src} alt="Entre Rocas y Cristales"
+                  style={{
+                    position: 'absolute', inset: 0,
+                    width: '100%', height: '100%', objectFit: 'cover',
+                    opacity: i === slideIdx ? (slideIn ? 1 : 0) : 0,
+                    transition: 'opacity 0.8s ease',
+                  }}
+                />
+              ))}
+              {/* Gradiente sutil */}
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,.25) 0%, transparent 50%)',
+                pointerEvents: 'none',
               }} />
-          ))}
-        </div>
-
-        {/* Scroll hint */}
-        <div style={{
-          position: 'absolute', bottom: 20, left: 0, right: 0, zIndex: 3,
-          display: 'flex', justifyContent: 'center',
-        }}>
-          <div className="scroll-hint" style={{ color: 'rgba(255,255,255,.55)' }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-              <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-            Descubrir
+              {/* Dots */}
+              <div style={{
+                position: 'absolute', bottom: 16, left: 0, right: 0,
+                display: 'flex', justifyContent: 'center', gap: 6,
+              }}>
+                {HERO_IMGS.map((_, i) => (
+                  <button key={i}
+                    onClick={() => { setSlideIn(false); setTimeout(() => { setSlideIdx(i); setSlideIn(true) }, 400) }}
+                    style={{
+                      width: i === slideIdx ? 20 : 6, height: 6,
+                      borderRadius: 3, border: 0, cursor: 'pointer', padding: 0,
+                      background: i === slideIdx ? 'white' : 'rgba(255,255,255,.45)',
+                      transition: 'width .25s, background .25s',
+                    }} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Scroll hint */}
+      <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 32 }}>
+        <div className="scroll-hint">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+          Descubrir
+        </div>
+      </div>
 
       {/* ── AVAILABILITY BAR ── */}
       <section style={{ maxWidth: 1280, margin: '0 auto' }} className="rg-px">
@@ -239,11 +223,11 @@ export default function Home() {
   )
 }
 
-function Stat({ n, label, light }) {
+function Stat({ n, label }) {
   return (
     <div>
-      <div className="font-display" style={{ fontSize: 32, color: light ? '#ffffff' : 'var(--color-bark)', lineHeight: 1 }}>{n}</div>
-      <div style={{ fontSize: 11, color: light ? 'rgba(255,255,255,.6)' : 'var(--color-faint)', letterSpacing: '.1em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
+      <div className="font-display" style={{ fontSize: 32, color: 'var(--color-bark)', lineHeight: 1 }}>{n}</div>
+      <div style={{ fontSize: 11, color: 'var(--color-faint)', letterSpacing: '.1em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
     </div>
   )
 }
