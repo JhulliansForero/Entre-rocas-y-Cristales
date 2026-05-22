@@ -292,12 +292,12 @@ export default function AdminCabinPhotos() {
             </Field>
 
             {/* Métricas */}
-            <div className="rg-specs4">
-              <Field label="Precio / noche (COP)" hint="Solo números">
+            <div className="rg-specs4" style={{ alignItems: 'start' }}>
+              <Field label="Precio/noche" hint="COP · solo números">
                 <input type="number" style={inputStyle} value={form.price_per_night}
                   onChange={e => setF('price_per_night', e.target.value)} />
               </Field>
-              <Field label="Capacidad (personas)">
+              <Field label="Capacidad">
                 <input type="number" min="1" max="10" style={inputStyle} value={form.capacity}
                   onChange={e => setF('capacity', e.target.value)} />
               </Field>
@@ -305,7 +305,7 @@ export default function AdminCabinPhotos() {
                 <input type="number" min="1" max="10" style={inputStyle} value={form.bedrooms}
                   onChange={e => setF('bedrooms', e.target.value)} />
               </Field>
-              <Field label="Superficie (m²)">
+              <Field label="Superficie m²">
                 <input type="number" min="1" style={inputStyle} value={form.size_sqm}
                   onChange={e => setF('size_sqm', e.target.value)} />
               </Field>
