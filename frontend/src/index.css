@@ -336,6 +336,9 @@
   .rg-trust-div { display: none; }
 }
 
+/* ── Métricas de cabaña: siempre 2×2 ── */
+.rg-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+
 /* ── Admin cabin row: thumbnail | info | button ── */
 .rg-admin-cabin-row {
   display: grid;

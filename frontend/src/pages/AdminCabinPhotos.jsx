@@ -292,7 +292,7 @@ export default function AdminCabinPhotos() {
             </Field>
 
             {/* Métricas */}
-            <div className="rg-specs4" style={{ alignItems: 'start' }}>
+            <div className="rg-metrics">
               <Field label="Precio/noche" hint="COP · solo números">
                 <input type="number" style={inputStyle} value={form.price_per_night}
                   onChange={e => setF('price_per_night', e.target.value)} />
