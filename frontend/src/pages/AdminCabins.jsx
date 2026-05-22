@@ -67,7 +67,7 @@ export default function AdminCabins() {
                 <div>
                   <div className="font-display" style={{ fontSize: 20 }}>{c.name}</div>
                   <div className="font-display-i" style={{ color: 'var(--color-moss)', fontSize: 13, marginTop: 2 }}>{c.tagline}</div>
-                  <div style={{ display: 'flex', gap: 14, marginTop: 8, fontSize: 12, color: 'var(--color-muted)', fontFamily: 'var(--font-body)' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px', marginTop: 8, fontSize: 12, color: 'var(--color-muted)', fontFamily: 'var(--font-body)' }}>
                     <span>👥 {c.capacity} personas</span>
                     <span>🛏 {c.bedrooms} {Number(c.bedrooms) === 1 ? 'cama' : 'camas'}</span>
                     <span>💰 {fmtCOP(c.price_per_night)} / noche</span>
