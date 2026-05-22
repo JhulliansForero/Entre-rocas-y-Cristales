@@ -230,7 +230,7 @@ export default function AdminCreateCabin() {
 
   return (
     <div style={{ background: 'var(--color-cream)', minHeight: '100vh', paddingBottom: 80 }}>
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '48px 24px' }}>
+      <div className="rg-px" style={{ maxWidth: 860, margin: '0 auto', paddingTop: 48, paddingBottom: 0 }}>
 
         {/* Header */}
         <div style={{ marginBottom: 36 }}>
@@ -250,7 +250,7 @@ export default function AdminCreateCabin() {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
+          <div className="rg-form-2col" style={{ gap: 32 }}>
 
             {/* Columna izquierda */}
             <div>
@@ -310,7 +310,7 @@ export default function AdminCreateCabin() {
               </Field>
 
               {/* Métricas */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 22 }}>
+              <div className="rg-metrics" style={{ marginBottom: 22 }}>
                 {[
                   { label: 'Capacidad', key: 'capacity', min: 1 },
                   { label: 'Camas', key: 'bedrooms', min: 1 },
@@ -328,17 +328,14 @@ export default function AdminCreateCabin() {
 
               {/* Color de acento */}
               <Field label="Color de acento" hint="Define los tonos de la tarjeta y detalles visuales">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                   <input type="color" value={form.accent_color}
                     onChange={e => set('accent_color', e.target.value)}
-                    style={{ width: 44, height: 44, borderRadius: 10, border: '1px solid var(--color-bone)', cursor: 'pointer', padding: 2 }} />
+                    style={{ width: 44, height: 44, borderRadius: 10, border: '1px solid var(--color-bone)', cursor: 'pointer', padding: 2, flexShrink: 0 }} />
                   <input value={form.accent_color}
                     onChange={e => set('accent_color', e.target.value)}
                     placeholder="#4a6650"
-                    style={{ ...inputStyle, width: 120 }} />
-                  <span style={{ fontSize: 12, color: 'var(--color-muted)', fontFamily: 'var(--font-body)' }}>
-                    Tint: {hexToTint(form.accent_color)}
-                  </span>
+                    style={{ ...inputStyle, width: 120, flexShrink: 0 }} />
                 </div>
               </Field>
 
@@ -355,7 +352,7 @@ export default function AdminCreateCabin() {
           </div>
 
           {/* Servicios y experiencias — ancho completo */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, marginTop: 8 }}>
+          <div className="rg-form-2col" style={{ gap: 32, marginTop: 8 }}>
             <Field label="Servicios incluidos" hint="Un servicio por línea">
               <textarea
                 value={form.amenities_raw}
