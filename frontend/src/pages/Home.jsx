@@ -88,7 +88,7 @@ export default function Home() {
               y silencio profundo.
             </h1>
             <p style={{ fontSize: 17, color: 'var(--color-muted)', maxWidth: 460, marginBottom: 36 }}>
-              Cuatro cabañas únicas escondidas en un valle de minerales y bosque alto en Güicán, Boyacá. Sin recepción, sin pantallas: solo madera, roca y el sonido del riachuelo.
+              Cuatro cabañas únicas escondidas en un valle de minerales y bosque alto en Ráquira, Boyacá. Sin recepción, sin pantallas: solo madera, roca y el sonido del riachuelo.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <button className="btn btn-primary btn-lg" onClick={() => navigate('/cabinas')}>Ver disponibilidad</button>
