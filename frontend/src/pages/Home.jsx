@@ -1,11 +1,21 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getCabins, getCabin } from '../services/cabins'
+import { getCabins } from '../services/cabins'
 import { fmtCOP } from '../utils/format'
 import SectionEyebrow from '../components/SectionEyebrow'
 import CabinBadge from '../components/CabinBadge'
 import Footer from '../components/Footer'
 import Spinner from '../components/Spinner'
+
+/* ── Fotos de paisaje para el hero (estáticas, no dependen de la API) ── */
+const HERO_IMGS = [
+  'https://jforeros.online/media/hero/562902104.jpg',
+  'https://jforeros.online/media/hero/562902239.jpg',
+  'https://jforeros.online/media/hero/562907028.jpg',
+  'https://jforeros.online/media/hero/347870371.jpg',
+  'https://jforeros.online/media/hero/424731102.jpg',
+  'https://jforeros.online/media/hero/343374770.jpg',
+]
 
 /* ── Iconos inline SVG ── */
 const Icon = ({ d, size = 22 }) => (
@@ -24,140 +34,137 @@ const PILLARS = [
 
 export default function Home() {
   const navigate = useNavigate()
-  const [cabins,     setCabins]     = useState([])
-  const [loading,    setLoading]    = useState(true)
-  const [slideImgs,  setSlideImgs]  = useState([])
-  const [slideIdx,   setSlideIdx]   = useState(0)
-  const [slideIn,    setSlideIn]    = useState(true)   // crossfade flag
+  const [cabins,  setCabins]  = useState([])
+  const [loading, setLoading] = useState(true)
+  const [slideIdx, setSlideIdx] = useState(0)
+  const [slideIn,  setSlideIn]  = useState(true)
   const timerRef = useRef(null)
 
   useEffect(() => {
-    // Cargar lista de cabañas
     getCabins()
-      .then(async r => {
-        const list = r.data.results ?? r.data
-        setCabins(list)
-        // Recopilar TODAS las fotos: portadas + galería de cada cabaña
-        const details = await Promise.all(list.map(c => getCabin(c.id)))
-        const imgs = []
-        details.forEach(r => {
-          const c = r.data
-          if (c.main_image_url) imgs.push(c.main_image_url)
-          ;(c.images ?? []).forEach(img => { if (img.image) imgs.push(img.image) })
-        })
-        setSlideImgs(imgs)
-      })
+      .then(r => { const list = r.data.results ?? r.data; setCabins(list) })
       .catch(() => {})
       .finally(() => setLoading(false))
   }, [])
 
-  // Rotación cada 5 segundos con crossfade
+  /* Rotación hero cada 6 s con crossfade lento */
   useEffect(() => {
-    if (slideImgs.length < 2) return
     timerRef.current = setInterval(() => {
       setSlideIn(false)
       setTimeout(() => {
-        setSlideIdx(i => (i + 1) % slideImgs.length)
+        setSlideIdx(i => (i + 1) % HERO_IMGS.length)
         setSlideIn(true)
-      }, 400)
-    }, 5000)
+      }, 700)
+    }, 6000)
     return () => clearInterval(timerRef.current)
-  }, [slideImgs])
+  }, [])
 
   const first3 = cabins.slice(0, 3)
   const last2  = cabins.slice(3)
 
   return (
     <div style={{ background: 'var(--color-cream)' }}>
-      {/* ── HERO ── */}
-      <section className="rg-hero-section rg-px" style={{ maxWidth: 1280, margin: '0 auto', paddingTop: 48, paddingBottom: 32 }}>
-        <div className="rg-hero">
-          {/* Left */}
-          <div>
-            <SectionEyebrow>Alojamiento rural · Boyacá</SectionEyebrow>
-            <h1 className="font-display" style={{ fontSize: 'clamp(48px, 5.5vw, 76px)', lineHeight: 1.02, margin: '20px 0 24px', letterSpacing: '-0.02em', color: 'var(--color-bark)' }}>
-              Un refugio
-              <br />
-              <span className="font-display-i" style={{ color: 'var(--color-moss)' }}>entre rocas, cristales</span>
-              <br />
-              y silencio profundo.
-            </h1>
-            <p style={{ fontSize: 17, color: 'var(--color-muted)', maxWidth: 460, marginBottom: 36 }}>
-              Cuatro cabañas únicas escondidas en un valle de minerales y bosque alto en Güicán, Boyacá. Sin recepción, sin pantallas: solo madera, roca y el sonido del riachuelo.
-            </p>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <button className="btn btn-primary btn-lg" onClick={() => navigate('/cabinas')}>Ver disponibilidad</button>
-              <button className="btn btn-secondary btn-lg" onClick={() => navigate('/cabinas')}>Conocer las cabañas →</button>
-            </div>
 
-            {/* Trust strip */}
-            <div className="rg-trust" style={{ marginTop: 56, display: 'flex', gap: 36, alignItems: 'center', flexWrap: 'wrap' }}>
-              <Stat n="4.96" label="rating promedio" />
-              <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
-              <Stat n="4" label="cabañas únicas" />
-              <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'var(--color-bone)' }} />
-              <Stat n="2.8k+" label="huéspedes desde 2021" />
-            </div>
+      {/* ── HERO — fondo completo con slideshow ── */}
+      <section style={{
+        position: 'relative',
+        minHeight: 'calc(100svh - 73px)',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}>
+        {/* Imágenes de fondo con crossfade */}
+        {HERO_IMGS.map((src, i) => (
+          <img key={src} src={src} alt=""
+            style={{
+              position: 'absolute', inset: 0,
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+              opacity: i === slideIdx ? (slideIn ? 1 : 0) : 0,
+              transition: 'opacity 0.8s ease',
+              zIndex: 0,
+            }} />
+        ))}
+
+        {/* Overlay: más oscuro abajo y a la izquierda para legibilidad del texto */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.45) 45%, rgba(0,0,0,.22) 100%)',
+          pointerEvents: 'none',
+        }} />
+
+        {/* Contenido sobre el fondo */}
+        <div style={{
+          position: 'relative', zIndex: 2,
+          maxWidth: 1280, margin: '0 auto', width: '100%',
+        }} className="rg-px">
+          <SectionEyebrow color="rgba(255,255,255,.75)">
+            Alojamiento rural · Boyacá
+          </SectionEyebrow>
+          <h1 className="font-display" style={{
+            fontSize: 'clamp(44px, 6vw, 82px)', lineHeight: 1.02,
+            margin: '18px 0 22px', letterSpacing: '-0.02em',
+            color: '#ffffff', maxWidth: 680,
+          }}>
+            Un refugio
+            <br />
+            <span className="font-display-i" style={{ color: 'rgba(215,222,198,.95)' }}>entre rocas, cristales</span>
+            <br />
+            y silencio profundo.
+          </h1>
+          <p style={{ fontSize: 17, color: 'rgba(255,255,255,.82)', maxWidth: 460, marginBottom: 36, lineHeight: 1.65 }}>
+            Cuatro cabañas únicas escondidas en un valle de minerales y bosque alto en Güicán, Boyacá. Sin recepción, sin pantallas: solo madera, roca y el sonido del riachuelo.
+          </p>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <button className="btn btn-primary btn-lg" onClick={() => navigate('/cabinas')}>Ver disponibilidad</button>
+            <button className="btn btn-lg"
+              onClick={() => navigate('/cabinas')}
+              style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '1px solid rgba(255,255,255,.35)', backdropFilter: 'blur(4px)' }}>
+              Conocer las cabañas →
+            </button>
           </div>
 
-          {/* Right — slideshow */}
-          <div className="rg-hero-img">
-            <div style={{
-              position: 'absolute', inset: 0, borderRadius: 32,
-              overflow: 'hidden', boxShadow: 'var(--shadow-lg)',
-              background: 'var(--color-bark)',
-            }}>
-              {slideImgs.length > 0 && (
-                <img
-                  key={slideIdx}
-                  src={slideImgs[slideIdx]}
-                  alt="Entre Rocas y Cristales"
-                  style={{
-                    width: '100%', height: '100%', objectFit: 'cover',
-                    opacity: slideIn ? 1 : 0,
-                    transition: 'opacity .4s ease',
-                  }}
-                />
-              )}
-              {/* Gradiente sutil al fondo */}
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,.25) 0%, transparent 50%)',
-                pointerEvents: 'none',
+          {/* Trust strip */}
+          <div className="rg-trust" style={{ marginTop: 52, display: 'flex', gap: 36, alignItems: 'center', flexWrap: 'wrap' }}>
+            <Stat n="4.96" label="rating promedio" light />
+            <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'rgba(255,255,255,.25)' }} />
+            <Stat n="4" label="cabañas únicas" light />
+            <div className="rg-trust-div" style={{ width: 1, height: 36, background: 'rgba(255,255,255,.25)' }} />
+            <Stat n="2.8k+" label="huéspedes desde 2021" light />
+          </div>
+        </div>
+
+        {/* Dots del slideshow */}
+        <div style={{
+          position: 'absolute', bottom: 80, left: 0, right: 0, zIndex: 3,
+          display: 'flex', justifyContent: 'center', gap: 8,
+        }}>
+          {HERO_IMGS.map((_, i) => (
+            <button key={i}
+              onClick={() => { setSlideIn(false); setTimeout(() => { setSlideIdx(i); setSlideIn(true) }, 400) }}
+              style={{
+                width: i === slideIdx ? 24 : 7, height: 7,
+                borderRadius: 4, border: 0, cursor: 'pointer', padding: 0,
+                background: i === slideIdx ? '#fff' : 'rgba(255,255,255,.4)',
+                transition: 'width .3s, background .3s',
               }} />
-              {/* Dots */}
-              {slideImgs.length > 1 && (
-                <div style={{
-                  position: 'absolute', bottom: 16, left: 0, right: 0,
-                  display: 'flex', justifyContent: 'center', gap: 6,
-                }}>
-                  {slideImgs.map((_, i) => (
-                    <button key={i}
-                      onClick={() => { setSlideIn(false); setTimeout(() => { setSlideIdx(i); setSlideIn(true) }, 300) }}
-                      style={{
-                        width: i === slideIdx ? 20 : 6, height: 6,
-                        borderRadius: 3, border: 0, cursor: 'pointer',
-                        background: i === slideIdx ? 'white' : 'rgba(255,255,255,.45)',
-                        transition: 'width .25s, background .25s',
-                        padding: 0,
-                      }} />
-                  ))}
-                </div>
-              )}
-            </div>
+          ))}
+        </div>
+
+        {/* Scroll hint */}
+        <div style={{
+          position: 'absolute', bottom: 20, left: 0, right: 0, zIndex: 3,
+          display: 'flex', justifyContent: 'center',
+        }}>
+          <div className="scroll-hint" style={{ color: 'rgba(255,255,255,.55)' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+            Descubrir
           </div>
         </div>
       </section>
-
-      {/* Scroll hint */}
-      <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 32 }}>
-        <div className="scroll-hint">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-          Descubrir
-        </div>
-      </div>
 
       {/* ── AVAILABILITY BAR ── */}
       <section style={{ maxWidth: 1280, margin: '0 auto' }} className="rg-px">
@@ -232,11 +239,11 @@ export default function Home() {
   )
 }
 
-function Stat({ n, label }) {
+function Stat({ n, label, light }) {
   return (
     <div>
-      <div className="font-display" style={{ fontSize: 32, color: 'var(--color-bark)', lineHeight: 1 }}>{n}</div>
-      <div style={{ fontSize: 11, color: 'var(--color-faint)', letterSpacing: '.1em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
+      <div className="font-display" style={{ fontSize: 32, color: light ? '#ffffff' : 'var(--color-bark)', lineHeight: 1 }}>{n}</div>
+      <div style={{ fontSize: 11, color: light ? 'rgba(255,255,255,.6)' : 'var(--color-faint)', letterSpacing: '.1em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
     </div>
   )
 }
