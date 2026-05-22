@@ -243,7 +243,7 @@ export default function AdminCabinPhotos() {
         }}>{toast.msg}</div>
       )}
 
-      <section style={{ maxWidth: 920, margin: '0 auto', padding: '56px 32px 80px' }}>
+      <section className="rg-px" style={{ maxWidth: 920, margin: '0 auto', paddingTop: 56, paddingBottom: 80 }}>
 
         {/* Header */}
         <button onClick={() => navigate('/admin/cabanas')}
@@ -273,7 +273,7 @@ export default function AdminCabinPhotos() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
 
             {/* Nombre + Tagline */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+            <div className="rg-form-2col">
               <Field label="Nombre de la cabaña">
                 <input style={inputStyle} value={form.name} onChange={e => setF('name', e.target.value)} />
               </Field>
@@ -292,7 +292,7 @@ export default function AdminCabinPhotos() {
             </Field>
 
             {/* Métricas */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+            <div className="rg-specs4">
               <Field label="Precio / noche (COP)" hint="Solo números">
                 <input type="number" style={inputStyle} value={form.price_per_night}
                   onChange={e => setF('price_per_night', e.target.value)} />
@@ -368,7 +368,7 @@ export default function AdminCabinPhotos() {
                 Primera imagen en el catálogo. Recomendado: 1200 × 900 px, JPG o WebP.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' }}>
+              <div className="rg-form-2col" style={{ alignItems: 'start' }}>
                 <div>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 10 }}>Portada actual</div>
                   <div style={{ borderRadius: 14, overflow: 'hidden', background: 'var(--color-paper)', aspectRatio: '4/3' }}>
@@ -441,7 +441,7 @@ export default function AdminCabinPhotos() {
 
               <div style={{ background: 'var(--color-snow)', border: '1px solid var(--color-bone)', borderRadius: 18, padding: 22 }}>
                 <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--color-bark)', fontFamily: 'var(--font-body)', marginBottom: 16 }}>＋ Agregar imagen a la galería</div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, alignItems: 'start' }}>
+                <div className="rg-form-2col" style={{ alignItems: 'start' }}>
                   <div>
                     {gallPreview ? (
                       <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', aspectRatio: '4/3' }}>
