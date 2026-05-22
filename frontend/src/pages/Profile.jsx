@@ -59,7 +59,7 @@ export default function Profile() {
 
   return (
     <div style={{ background: 'var(--color-cream)', minHeight: '100vh' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '56px 32px 0' }}>
+      <div className="rg-px" style={{ maxWidth: 1100, margin: '0 auto', paddingTop: 56, paddingBottom: 0 }}>
 
         {/* Header */}
         <SectionEyebrow>Mi cuenta</SectionEyebrow>
@@ -67,7 +67,7 @@ export default function Profile() {
           Mi <span className="font-display-i" style={{ color: 'var(--color-moss)' }}>perfil</span>
         </h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: 36, alignItems: 'start' }}>
+        <div className="rg-profile-layout">
 
           {/* ── Sidebar ── */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
