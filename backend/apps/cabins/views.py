@@ -3,7 +3,7 @@ from datetime import date
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics, status, viewsets
 from rest_framework.decorators import action
-from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.parsers import FormParser, MultiPartParser, JSONParser
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
@@ -135,7 +135,7 @@ class HeroImageViewSet(viewsets.ModelViewSet):
     DELETE /api/hero-images/id/   → eliminar (admin)
     """
     serializer_class = HeroImageSerializer
-    parser_classes   = [MultiPartParser, FormParser]
+    parser_classes   = [MultiPartParser, FormParser, JSONParser]
 
     def get_queryset(self):
         if self.request.user and getattr(self.request.user, "role", None) == "admin":
