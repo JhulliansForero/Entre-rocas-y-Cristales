@@ -20,7 +20,7 @@ export default function AdminCabins() {
 
   return (
     <div style={{ background: 'var(--color-cream)', minHeight: '100vh' }}>
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '56px 32px 80px' }}>
+      <section className="rg-px" style={{ maxWidth: 1100, margin: '0 auto', paddingTop: 56, paddingBottom: 80 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 32, flexWrap: 'wrap', gap: 16 }}>
           <div>
             <SectionEyebrow>Panel admin · Cabañas</SectionEyebrow>
@@ -42,20 +42,16 @@ export default function AdminCabins() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {cabins.map(c => (
-              <div key={c.id} style={{
+              <div key={c.id} className="rg-admin-cabin-row" style={{
                 background: 'var(--color-snow)',
                 border: '1px solid var(--color-bone)',
                 borderRadius: 20,
-                display: 'grid',
-                gridTemplateColumns: '120px 1fr auto',
-                alignItems: 'center',
-                gap: 20,
                 padding: 16,
                 overflow: 'hidden',
               }}>
                 {/* Cover thumb */}
                 <div style={{
-                  width: 120, height: 90, borderRadius: 12, overflow: 'hidden',
+                  width: '100%', height: 90, borderRadius: 12, overflow: 'hidden',
                   background: 'var(--color-paper)',
                   flexShrink: 0,
                 }}>

@@ -336,6 +336,27 @@
   .rg-trust-div { display: none; }
 }
 
+/* ── Admin cabin row: thumbnail | info | button ── */
+.rg-admin-cabin-row {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .rg-admin-cabin-row {
+    grid-template-columns: 90px 1fr;
+    gap: 12px;
+  }
+  /* El botón pasa a fila propia que ocupa todo el ancho */
+  .rg-admin-cabin-row > *:last-child {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ── Profile layout: sidebar 300px + main ── */
 .rg-profile-layout {
   display: grid;
