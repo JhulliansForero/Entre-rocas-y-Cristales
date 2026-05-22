@@ -30,11 +30,13 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" style={{ background: 'none', border: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
           <Monogram size={42} />
-          <Wordmark size="md" />
+          <span className="hidden md:block">
+            <Wordmark size="md" />
+          </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="hidden md:flex">
+        <nav style={{ alignItems: 'center', gap: 4 }} className="hidden md:flex">
           {[['/', 'Inicio'], ['/cabinas', 'Cabañas']].map(([path, label]) => (
             <NavLink key={path} to={path} end={path === '/'}
               style={({ isActive }) => ({
@@ -75,7 +77,7 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop auth */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }} className="hidden md:flex">
+        <div style={{ alignItems: 'center', gap: 10 }} className="hidden md:flex">
           {user ? (
             <div style={{ position: 'relative' }}>
               <button className="btn btn-secondary btn-sm"
