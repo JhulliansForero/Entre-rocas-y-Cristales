@@ -28,12 +28,11 @@ export default function Login() {
 
   return (
     // Split layout — imagen izquierda, formulario derecha
-    <div style={{ minHeight: 'calc(100vh - 90px)', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-      {/* Left — imagen decorativa */}
-      <div style={{
+    <div className="rg-auth-split">
+      {/* Left — imagen decorativa (oculto en móvil) */}
+      <div className="rg-auth-deco ph-stripe" style={{
         background: 'linear-gradient(135deg, var(--color-forest), var(--color-bark))',
-        position: 'relative',
-      }} className="ph-stripe">
+      }}>
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(180deg, rgba(47,62,28,.35), rgba(47,62,28,.78))',
@@ -51,7 +50,7 @@ export default function Login() {
       </div>
 
       {/* Right — form */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 56 }}>
+      <div className="rg-px" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '56px 32px' }}>
         <div style={{ width: '100%', maxWidth: 420 }}>
           <SectionEyebrow>Acceso</SectionEyebrow>
           <h1 className="font-display" style={{ fontSize: 44, margin: '10px 0 8px' }}>Inicia sesión</h1>

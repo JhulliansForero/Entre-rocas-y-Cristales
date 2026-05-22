@@ -274,11 +274,8 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     gap: 14px;
-    margin-left: -16px;
-    margin-right: -16px;
-    padding-left: 16px;
-    padding-right: 16px;
     padding-bottom: 8px;
+    padding-right: 16px;
   }
   .rg-swipe::-webkit-scrollbar { display: none; }
   .rg-swipe > * {
@@ -337,6 +334,26 @@
   /* Trust strip en hero */
   .rg-trust { gap: 16px !important; flex-wrap: wrap; }
   .rg-trust-div { display: none; }
+}
+
+/* ── Login split (panel decorativo izquierda + formulario derecha) ── */
+.rg-auth-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 90px);
+}
+.rg-auth-deco { position: relative; }
+
+/* ── Formulario registro: 2 columnas desktop, 1 columna móvil ── */
+.rg-form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+@media (max-width: 768px) {
+  /* Login: ocultar panel decorativo, formulario ocupa todo el ancho */
+  .rg-auth-split { grid-template-columns: 1fr; }
+  .rg-auth-deco  { display: none !important; }
+
+  /* Registro: campos en 1 columna */
+  .rg-form-2col  { grid-template-columns: 1fr; }
 }
 
 /* Móvil pequeño (≤ 480px) */

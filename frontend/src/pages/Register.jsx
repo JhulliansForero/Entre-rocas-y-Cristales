@@ -70,7 +70,7 @@ export default function Register() {
   const hasErr = name => !!fieldErrors[name]
 
   return (
-    <div style={{ maxWidth: 1080, margin: '0 auto', padding: '56px 32px' }}>
+    <div className="rg-px" style={{ maxWidth: 1080, margin: '0 auto', paddingTop: 56, paddingBottom: 56 }}>
       <div style={{ textAlign: 'center', marginBottom: 36 }}>
         <SectionEyebrow>Únete a la familia</SectionEyebrow>
         <h1 className="font-display" style={{ fontSize: 'clamp(36px, 4vw, 56px)', margin: '12px 0 6px' }}>
@@ -87,8 +87,8 @@ export default function Register() {
         </div>
       )}
 
-      <form onSubmit={submit} className="card" style={{ padding: 36 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+      <form onSubmit={submit} className="card" style={{ padding: 'clamp(20px, 4vw, 36px)' }}>
+        <div className="rg-form-2col">
 
           <Field label="Nombre">
             <input
