@@ -75,14 +75,18 @@ services:
       - certbot_www:/var/www/certbot:ro
     networks:
       - internal
+      - web-publica
     depends_on:
       - backend
       - frontend
 
-# ─── Red interna privada ─────────────────────────────────────
+# ─── Redes ───────────────────────────────────────────────────
 networks:
   internal:
     driver: bridge
+  # Red compartida con el proyecto del compañero (se crea aparte en la VPS)
+  web-publica:
+    external: true
 
 # ─── Volúmenes persistentes ───────────────────────────────────
 volumes:
