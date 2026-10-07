@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Reto herramientas digitales</title>
+<style>
+  :root { --rojo:#9b2335; --oro:#f2b705; --tinta:#1f2430; --gris:#5b6270; --fondo:#f4f1ec; --borde:#e2ddd4; --verde:#1e7a4f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fondo); font-family: "Segoe UI", Roboto, Arial, sans-serif; color:var(--tinta); }
+  .slide { width:1280px; height:720px; margin:0 auto 24px; background:#fff; position:relative; overflow:hidden; padding:56px 72px 48px; }
+  .slide::before { content:""; position:absolute; inset:0 0 auto 0; height:10px; background:linear-gradient(90deg,var(--rojo) 70%,var(--oro)); }
+  .tag { font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:var(--rojo); font-weight:700; margin-bottom:8px; }
+  h1 { font-size:40px; margin:0 0 6px; line-height:1.15; }
+  h2 { font-size:32px; margin:0 0 22px; }
+  .sub { color:var(--gris); font-size:19px; margin:0 0 28px; }
+  .pie { position:absolute; bottom:22px; left:72px; right:72px; font-size:13px; color:var(--gris); display:flex; justify-content:space-between; border-top:1px solid var(--borde); padding-top:10px; }
+  table { border-collapse:collapse; width:100%; font-size:16px; }
+  th { background:var(--rojo); color:#fff; text-align:left; padding:10px 12px; font-weight:600; }
+  td { padding:9px 12px; border-bottom:1px solid var(--borde); vertical-align:top; }
+  tr:nth-child(even) td { background:#faf8f4; }
+  .grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+  .tool { border:1px solid var(--borde); border-radius:12px; padding:16px; }
+  .tool b { display:block; font-size:19px; margin-bottom:6px; }
+  .tool span { font-size:14.5px; color:var(--gris); line-height:1.4; }
+  .tool .rol { display:inline-block; font-size:12px; font-weight:700; color:#fff; background:var(--rojo); padding:3px 8px; border-radius:20px; margin-bottom:10px; }
+  .why { margin-top:26px; background:#fff8e1; border-left:5px solid var(--oro); padding:16px 20px; font-size:17px; line-height:1.5; border-radius:0 8px 8px 0; }
+  .evento { display:grid; grid-template-columns:1.25fr 1fr; gap:28px; }
+  .card { border:1px solid var(--borde); border-radius:14px; padding:22px 24px; }
+  .fila { display:flex; gap:14px; padding:10px 0; border-bottom:1px dashed var(--borde); font-size:17px; }
+  .fila:last-child { border-bottom:0; }
+  .fila .k { width:150px; color:var(--gris); flex:none; }
+  .link { color:#1a56c4; font-weight:600; word-break:break-all; }
+  .ok { color:var(--verde); font-weight:700; }
+  .total td { font-weight:700; background:#fff3cd !important; }
+  .win { color:var(--verde); }
+  .checks { columns:2; column-gap:40px; font-size:17px; line-height:1.45; padding:0; list-style:none; margin:0; }
+  .checks li { break-inside:avoid; margin-bottom:14px; padding-left:34px; position:relative; }
+  .checks li::before { content:"✔"; position:absolute; left:0; top:0; width:24px; height:24px; border-radius:6px; background:var(--verde); color:#fff; font-size:14px; display:grid; place-items:center; }
+  .seq { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:24px; }
+  .seq span { background:var(--rojo); color:#fff; padding:8px 14px; border-radius:8px; font-weight:700; font-size:15px; }
+  .seq i { color:var(--gris); font-style:normal; }
+  .dos { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .si h3, .no h3 { margin:0 0 10px; font-size:19px; }
+  .si { border-top:5px solid var(--verde); } .no { border-top:5px solid var(--rojo); }
+  .si ul, .no ul { margin:0; padding-left:20px; font-size:16px; line-height:1.6; }
+  .nota { font-size:15px; color:var(--gris); margin-top:16px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Reunión programada -->
+<section class="slide" id="s1">
+  <div class="tag">Evidencia 1 · Realizar una reunión sincrónica</div>
+  <h1>Reunión programada en Google Calendar con Google Meet</h1>
+  <p class="sub">Evento creado en la cuenta del organizador, con enlace de videollamada, agenda, documento adjunto y recordatorios.</p>
+  <div class="evento">
+    <div class="card">
+      <div class="fila"><div class="k">Título</div><div><b>Reunión sincrónica — Reto “Consultores de herramientas digitales”</b></div></div>
+      <div class="fila"><div class="k">Fecha</div><div>Jueves 8 de octubre de 2026</div></div>
+      <div class="fila"><div class="k">Hora</div><div>2:00 p. m. – 3:50 p. m. (hora de Colombia)</div></div>
+      <div class="fila"><div class="k">Videollamada</div><div class="link">meet.google.com/rrs-cjda-pst</div></div>
+      <div class="fila"><div class="k">Adjunto</div><div>📄 Documento colaborativo (Google Docs)</div></div>
+      <div class="fila"><div class="k">Recordatorios</div><div>30 min y 5 min antes</div></div>
+      <div class="fila"><div class="k">Invitados</div><div>No pueden invitar a otros ni modificar el evento</div></div>
+      <div class="fila"><div class="k">Estado</div><div class="ok">Confirmado ✔</div></div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 12px;font-size:20px">Agenda (110 min)</h3>
+      <table>
+        <tr><th>Min</th><th>Momento</th></tr>
+        <tr><td>15</td><td>Saberes previos (Padlet)</td></tr>
+        <tr><td>25</td><td>Exploración en salas pequeñas</td></tr>
+        <tr><td>20</td><td>Actividad con IA</td></tr>
+        <tr><td>20</td><td>Socialización</td></tr>
+        <tr><td>20</td><td>Entornos inteligentes</td></tr>
+        <tr><td>10</td><td>Cierre metacognitivo</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="pie"><span>Informática Básica · Unidad 2 · Semana 6</span><span>Universidad de Pamplona</span></div>
+</section>
+
+<!-- 2. Recomendación -->
+<section class="slide" id="s2">
+  <div class="tag">Reto del estudiante</div>
+  <h1>¿Qué combinación de herramientas recomendamos?</h1>
+  <p class="sub">Ecosistema Google con la cuenta institucional: una sola cuenta para reunirse, compartir, organizar y colaborar.</p>
+  <div class="grid">
+    <div class="tool"><div class="rol">Reunión</div><b>Google Meet</b><span>Video, chat, pantalla compartida, salas pequeñas, encuestas, levantar la mano, subtítulos.</span></div>
+    <div class="tool"><div class="rol">Organizar</div><b>Google Classroom</b><span>Tareas con fecha, material, entregas y calificación con rúbrica.</span></div>
+    <div class="tool"><div class="rol">Colaborar</div><b>Drive + Docs</b><span>Edición simultánea, comentarios, historial de versiones y permisos.</span></div>
+    <div class="tool"><div class="rol">Participar</div><b>Padlet</b><span>Muro interactivo para la lluvia de ideas; todos aportan a la vez.</span></div>
+    <div class="tool"><div class="rol">IA</div><b>Gemini</b><span>Ideas, resúmenes y preguntas, siempre verificadas por personas.</span></div>
+  </div>
+  <div class="why"><b>¿Por qué?</b> Las herramientas se integran entre sí: el enlace de Meet sale de Calendar o Classroom, los archivos quedan en Drive y los permisos se controlan en un solo lugar. Los estudiantes ya tienen cuenta, funciona en el navegador y en el celular, y no hay que instalar nada.</div>
+  <div class="pie"><span>Informática Básica · Unidad 2 · Semana 6</span><span>Universidad de Pamplona</span></div>
+</section>
+
+<!-- 3. Necesidades -->
+<section class="slide" id="s3">
+  <div class="tag">Pertinencia</div>
+  <h2>Cómo cubre cada necesidad de la dependencia</h2>
+  <table>
+    <tr><th style="width:27%">Necesidad</th><th style="width:20%">Herramienta</th><th>Función concreta</th></tr>
+    <tr><td>Reunión sincrónica</td><td>Google Meet</td><td>Videollamada programada en Calendar con enlace único y pantalla compartida.</td></tr>
+    <tr><td>Participación de estudiantes</td><td>Meet + Padlet</td><td>Levantar la mano, chat, encuestas, salas pequeñas, subtítulos; muro de ideas.</td></tr>
+    <tr><td>Compartir información</td><td>Drive / Classroom</td><td>Carpeta de material enlazada desde el tablón de la clase.</td></tr>
+    <tr><td>Organizar actividades</td><td>Classroom + Calendar</td><td>Tareas con fecha, rúbrica y recordatorios automáticos.</td></tr>
+    <tr><td>Trabajo colaborativo</td><td>Documentos de Google</td><td>Edición en tiempo real, comentarios, sugerencias, historial.</td></tr>
+    <tr><td>Gestionar recursos digitales</td><td>Google Drive</td><td>Carpetas por equipo con permisos de lector, comentarista o editor.</td></tr>
+    <tr><td>Seguridad y privacidad</td><td>Meet + Drive</td><td>Cuenta institucional, acceso por solicitud, permisos restringidos.</td></tr>
+    <tr><td>IA cuando aporte valor</td><td>Gemini</td><td>Ideas, resúmenes y preguntas, con verificación y sin datos personales.</td></tr>
+  </table>
+  <div class="pie"><span>Informática Básica · Unidad 2 · Semana 6</span><span>Universidad de Pamplona</span></div>
+</section>
+
+<!-- 4. Matriz -->
+<section class="slide" id="s4">
+  <div class="tag">Producto final · Matriz de decisión</div>
+  <h2>Alternativas comparadas (1 = bajo, 3 = alto)</h2>
+  <table>
+    <tr><th style="width:40%">Criterio</th><th>Meet + Classroom + Drive</th><th>Microsoft Teams</th><th>Zoom</th></tr>
+    <tr><td>Reunión sincrónica</td><td>3</td><td>3</td><td>3</td></tr>
+    <tr><td>Organizar actividades y entregas</td><td>3</td><td>3</td><td>1</td></tr>
+    <tr><td>Trabajo colaborativo en documentos</td><td>3</td><td>3</td><td>2</td></tr>
+    <tr><td>Los estudiantes ya tienen cuenta</td><td>3</td><td>2</td><td>2</td></tr>
+    <tr><td>Funciona sin instalar / en celular</td><td>3</td><td>2</td><td>2</td></tr>
+    <tr><td>Límite del plan gratuito en grupo</td><td>2 (60 min)</td><td>2 (60 min)</td><td>1 (40 min)</td></tr>
+    <tr><td>Seguridad y control de acceso</td><td>3</td><td>3</td><td>3</td></tr>
+    <tr class="total"><td>Total</td><td class="win">20 ✔</td><td>18</td><td>14</td></tr>
+  </table>
+  <p class="nota"><b>Alternativa considerada:</b> Microsoft Teams, igual de válida si la dependencia ya usa Microsoft 365. <b>Criterio decisivo:</b> integración con una sola cuenta y facilidad de acceso.</p>
+  <div class="pie"><span>Informática Básica · Unidad 2 · Semana 6</span><span>Universidad de Pamplona</span></div>
+</section>
+
+<!-- 5. Seguridad -->
+<section class="slide" id="s5">
+  <div class="tag">Seguridad y privacidad</div>
+  <h2>Lista de verificación antes y durante la reunión</h2>
+  <ul class="checks">
+    <li>Entrar con la cuenta institucional, no con cuentas personales.</li>
+    <li>Activar los controles del organizador en Meet: acceso por solicitud y pantalla compartida controlada.</li>
+    <li>No publicar el enlace en redes sociales ni en grupos abiertos.</li>
+    <li>Si se graba, avisar antes y pedir consentimiento.</li>
+    <li>En Drive, compartir con personas concretas, nunca “cualquier persona con el enlace” en carpetas con datos.</li>
+    <li>Permiso de editor solo a quien debe editar; al resto, comentarista o lector.</li>
+    <li>Activar la verificación en dos pasos.</li>
+    <li>No poner en la IA datos personales, notas, contraseñas ni documentos institucionales sensibles.</li>
+  </ul>
+  <div class="pie"><span>Informática Básica · Unidad 2 · Semana 6</span><span>Universidad de Pamplona</span></div>
+</section>
+
+<!-- 6. IA -->
+<section class="slide" id="s6">
+  <div class="tag">Inteligencia artificial con criterio</div>
+  <h2>Usar IA solo cuando realmente aporta valor</h2>
+  <div class="seq"><span>PREGUNTAR</span><i>→</i><span>GENERAR</span><i>→</i><span>ANALIZAR</span><i>→</i><span>VERIFICAR</span><i>→</i><span>DECIDIR</span><i>→</i><span>APLICAR</span></div>
+  <div class="dos">
+    <div class="card si"><h3>✔ Sí aporta valor</h3><ul>
+      <li>Generar ideas para la lluvia de ideas.</li>
+      <li>Resumir los acuerdos de la reunión.</li>
+      <li>Proponer preguntas de profundización.</li>
+      <li>Comparar ventajas y desventajas, para luego verificarlas.</li></ul></div>
+    <div class="card no"><h3>✘ No aporta valor o es riesgoso</h3><ul>
+      <li>Escribir la reflexión personal del estudiante.</li>
+      <li>Decidir la herramienta sin argumentar.</li>
+      <li>Procesar datos personales de los participantes.</li>
+      <li>Dar por cierta información sin comprobarla en la fuente.</li></ul></div>
+  </div>
+  <p class="nota"><b>¿La herramienta más conocida es la más adecuada?</b> No necesariamente: ser conocida ayuda, pero hay que revisar si cubre la necesidad, si protege la privacidad, si es accesible y si sus límites sirven para la actividad.</p>
+  <div class="pie"><span>Informática Básica · Unidad 2 · Semana 6</span><span>Universidad de Pamplona</span></div>
+</section>
+
+</body>
+</html>
